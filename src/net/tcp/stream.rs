@@ -9,7 +9,7 @@ use std::{
 
 use bytes::{Buf, Bytes};
 use tokio::{
-    io::{AsyncRead, AsyncWrite, ReadBuf},
+    io::{AsyncRead, AsyncWrite, AsyncWriteExt, ReadBuf},
     runtime::Handle,
     sync::{mpsc, oneshot},
     time::sleep,
@@ -126,6 +126,10 @@ impl TcpStream {
                 inner: self.write_half,
             },
         )
+    }
+
+    pub fn set_nodelay(&self, _nodelay: bool) -> Result<()> {
+        Ok(())
     }
 }
 

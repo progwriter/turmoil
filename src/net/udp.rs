@@ -13,7 +13,7 @@ use crate::{
 use std::{
     cmp,
     io::{self, Error, ErrorKind, Result},
-    net::SocketAddr,
+    net::{Ipv6Addr, SocketAddr},
 };
 
 /// A simulated UDP socket.
@@ -297,6 +297,14 @@ impl UdpSocket {
             world.send_message(src, dst, msg)?;
         }
 
+        Ok(())
+    }
+
+    pub fn set_multicast_loop_v6(&self, _on: bool) -> Result<()> {
+        Ok(())
+    }
+
+    pub fn join_multicast_v6(&self, _multiaddr: &Ipv6Addr, _interface: u32) -> Result<()> {
         Ok(())
     }
 }

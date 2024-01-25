@@ -16,8 +16,8 @@ readme = "README.md"
 keywords = ["Deterministic", "Simulation", "Testing"]
 categories = ["asynchronous", "network-programming", "simulation"]
 
-[workspace]
-members = ["examples/*"]
+#[workspace]
+#members = ["examples/*"]
 
 [dependencies]
 bytes = "1.4"
