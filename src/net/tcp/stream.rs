@@ -9,7 +9,7 @@ use std::{
 
 use bytes::{Buf, Bytes};
 use tokio::{
-    io::{AsyncRead, AsyncWrite, AsyncWriteExt, ReadBuf},
+    io::{AsyncRead, AsyncWrite, ReadBuf},
     runtime::Handle,
     sync::{mpsc, oneshot},
     time::sleep,

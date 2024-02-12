@@ -12,7 +12,7 @@ use crate::{
 
 use std::{
     cmp,
-    io::{self, Error, ErrorKind, Result},
+    io::{self, Result},
     net::{Ipv6Addr, SocketAddr},
 };
 
@@ -107,12 +107,12 @@ impl UdpSocket {
             let mut addr = addr.to_socket_addr(&world.dns);
             let host = world.current_host_mut();
 
-            if !addr.ip().is_unspecified() && !addr.ip().is_loopback() {
-                return Err(Error::new(
-                    ErrorKind::AddrNotAvailable,
-                    format!("{addr} is not supported"),
-                ));
-            }
+            // if !addr.ip().is_unspecified() && !addr.ip().is_loopback() {
+            //     return Err(Error::new(
+            //         ErrorKind::AddrNotAvailable,
+            //         format!("{addr} is not supported"),
+            //     ));
+            // }
 
             if addr.is_ipv4() != host.addr.is_ipv4() {
                 panic!("ip version mismatch: {:?} host: {:?}", addr, host.addr)

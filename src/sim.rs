@@ -312,7 +312,7 @@ impl<'a> Sim<'a> {
     pub fn run(&mut self) -> Result {
         loop {
             let is_finished = self.step()?;
-
+            tracing::info!("is_finished {}", is_finished);
             if is_finished {
                 return Ok(());
             }
@@ -348,6 +348,7 @@ impl<'a> Sim<'a> {
             .filter(|(_, rt)| rt.is_software_running())
         {
             let _span_guard = tracing::span!(Level::INFO, "node", name = &*rt.nodename).entered();
+            tracing::info!("running {}", addr);
 
             {
                 let mut world = self.world.borrow_mut();
